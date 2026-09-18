@@ -10,6 +10,11 @@ RUN apt-get update && apt-get install -y curl \
 WORKDIR /app
 COPY pom.xml .
 RUN mvn dependency:go-offline -B
+
+# Копируем allurerc.mjs и устанавливаем пакет allure локально
+COPY allurerc.mjs .
+RUN npm install allure
+
 COPY src ./src
 
 CMD ["mvn", "clean", "test"]
