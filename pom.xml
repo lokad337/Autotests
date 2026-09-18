@@ -17,6 +17,15 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- Управляем версиями всех JUnit-зависимостей -->
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>5.10.1</version> <!-- Используйте ту же версию, что и у junit-jupiter -->
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- Управляем версиями Allure -->
             <dependency>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-bom</artifactId>
@@ -49,7 +58,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.2.5</version> <!-- Или 2.22.2 -->
+                <version>3.5.2</version> <!-- Рекомендуется версия 3.5.2 или выше -->
             </plugin>
 
             <plugin>
