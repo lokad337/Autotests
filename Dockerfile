@@ -1,12 +1,15 @@
-# Используем официальный образ Maven с нужной версией JDK
 FROM maven:3.9-eclipse-temurin-21
-# Устанавливаем рабочую директорию
+
+# Устанавливаем Node.js и Allure CLI (требуется для Allure 3)
+RUN apt-get update && apt-get install -y curl \
+    && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs \
+    && npm install -g allure \
+    && apt-get clean
+
 WORKDIR /app
-# Сначала копируем только pom.xml — так кэш зависимостей будет переиспользоваться
 COPY pom.xml .
-# Скачиваем зависимости (слой закэшируется, если pom.xml не менялся)
 RUN mvn dependency:go-offline -B
-# Теперь копируем исходники
 COPY src ./src
-# Команда по умолчанию (можно переопределить при запуске)
+
 CMD ["mvn", "clean", "test"]
