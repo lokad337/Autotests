@@ -10,6 +10,7 @@ export default defineConfig({
     },
   },
   allureService: {
+    url: "http://192.168.1.182:3000",
     accessToken: process.env.ALLURE_SERVICE_ACCESS_TOKEN, // Токен будет передан через переменную окружения
   },
 });
