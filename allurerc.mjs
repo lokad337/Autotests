@@ -5,11 +5,9 @@ export default defineConfig({
   plugins: {
     awesome: {
       options: {
-        publish: true, // Включает автоматическую публикацию отчёта
+        // publish: true,  // закомментировали публикацию
       },
     },
   },
-  allureService: {
-    accessToken: process.env.ALLURE_SERVICE_ACCESS_TOKEN, // Токен будет передан через переменную окружения
-  },
+  // allureService: { ... }  // тоже можно убрать
 });
