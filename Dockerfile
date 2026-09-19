@@ -1,19 +1,15 @@
 FROM maven:3.9-eclipse-temurin-21
 
-# Устанавливаем Node.js и Allure CLI (требуется для Allure 3)
+# Node.js нужен, чтобы allure-maven скачал и запустил CLI
 RUN apt-get update && apt-get install -y curl \
     && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
     && apt-get install -y nodejs \
-    && npm install -g allure \
-    && apt-get clean
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 COPY pom.xml .
 RUN mvn dependency:go-offline -B
-
-# Копируем allurerc.mjs и устанавливаем пакет allure локально
-COPY allurerc.mjs .
-RUN npm install allure
 
 COPY src ./src
 
