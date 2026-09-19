@@ -66,7 +66,9 @@
                 <artifactId>allure-maven</artifactId>
                 <version>3.0.2</version>
                 <configuration>
-                    <reportVersion>3.4.1</reportVersion> <!-- или более новая -->
+                    <reportVersion>3.4.1</reportVersion>
+                    <resultsDirectory>${project.basedir}/allure-results</resultsDirectory>
+                    <reportDirectory>${project.basedir}/allure-report</reportDirectory>
                 </configuration>
             </plugin>
         </plugins>
