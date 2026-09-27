@@ -17,15 +17,7 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- Управляем версиями всех JUnit-зависимостей -->
-            <dependency>
-                <groupId>org.junit</groupId>
-                <artifactId>junit-bom</artifactId>
-                <version>5.10.1</version> <!-- Используйте ту же версию, что и у junit-jupiter -->
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <!-- Управляем версиями Allure -->
+            <!-- ... JUnit BOM ... -->
             <dependency>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-bom</artifactId>
@@ -37,20 +29,12 @@
     </dependencyManagement>
 
     <dependencies>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>5.10.1</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- Allure для JUnit 5 -->
+        <!-- ... JUnit ... -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-jupiter</artifactId>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -58,15 +42,16 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.5.2</version> <!-- Рекомендуется версия 3.5.2 или выше -->
+                <version>3.5.2</version>
             </plugin>
-
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
                 <version>3.0.2</version>
                 <configuration>
-                    <reportVersion>3.4.1</reportVersion>
+                    <!-- 3. Указываем актуальную версию отчета -->
+                    <reportVersion>3.17.0</reportVersion>
+                    <!-- 4. Сохраняем результаты в корень проекта, чтобы 'mvn clean' их не удалял -->
                     <resultsDirectory>${project.basedir}/allure-results</resultsDirectory>
                     <reportDirectory>${project.basedir}/allure-report</reportDirectory>
                 </configuration>
