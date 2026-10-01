@@ -8,5 +8,6 @@ public class TestClass {
     void firstTest() {
         System.out.println("Первый тест, поздравляю");
         System.out.println("str 2");
+        System.out.println("str 3");
     }
 }
