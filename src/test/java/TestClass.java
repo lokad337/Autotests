@@ -7,5 +7,6 @@ public class TestClass {
     @DisplayName("Просто тест")
     void firstTest() {
         System.out.println("Первый тест, поздравляю");
+        System.out.println("str 2");
     }
 }
